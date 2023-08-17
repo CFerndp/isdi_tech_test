@@ -12,6 +12,6 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-	console.log(`Server is Fire at http://localhost:${port}`);
+	console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
 });
 
