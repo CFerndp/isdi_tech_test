@@ -2,7 +2,7 @@ import express, { Request, Response, Application } from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 
-import taskRouter from "./src/api/task";
+import taskRouter from "@/api/task";
 
 //For env File
 dotenv.config();
