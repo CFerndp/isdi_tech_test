@@ -3,15 +3,19 @@ import { Router } from "express";
 import getTasks from "@/controllers/task/getTasks";
 import deleteTaskById from "@/controllers/task/deleteTaskById";
 import updateTaskById from "@/controllers/task/updateTaskById";
+import createTask from "@/controllers/task/createTask";
 
 import { GENERIC_MSGS, getResponse } from "@/api/response";
-
-import { TASK_ROUTES } from "../routes";
+import { TASK_ROUTES } from "@/api/routes";
 
 const router = Router();
 
 router.get(TASK_ROUTES.getTasks, async (req, res) => {
-  return res.send(getResponse(await getTasks(), GENERIC_MSGS.Ok));
+  try {
+    return res.send(getResponse(await getTasks(), GENERIC_MSGS.Ok));
+  } catch {
+    return res.status(500).send(getResponse(null, GENERIC_MSGS.BadRequest));
+  }
 });
 
 router.put(TASK_ROUTES.updateTaskById, async (req, res) => {
@@ -24,6 +28,17 @@ router.put(TASK_ROUTES.updateTaskById, async (req, res) => {
     return res.send(getResponse(updatedTask, GENERIC_MSGS.Updated));
   } catch {
     return res.status(404).send(getResponse(null, GENERIC_MSGS.NotFound));
+  }
+});
+
+router.post(TASK_ROUTES.getTasks, async (req, res) => {
+  const { name } = req.body;
+
+  try {
+    const createdTask = await createTask(name);
+    return res.send(getResponse(createdTask, GENERIC_MSGS.Created));
+  } catch {
+    return res.status(500).send(getResponse(null, GENERIC_MSGS.BadRequest));
   }
 });
 
