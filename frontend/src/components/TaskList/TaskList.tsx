@@ -14,13 +14,18 @@ const TaskList: React.FC = () => {
       {tasks.length === 0 ? (
         <p className="text-xl">No tasks</p>
       ) : (
-        <ul className="list-disc">
-          {tasks.map((task) => (
-            <li key={task._id} className="list-item m-1">
-              <Task task={task} />
-            </li>
-          ))}
-        </ul>
+        <>
+          <p className="text-xl">
+            #Tasks: <span className="font-bold">{tasks.length}</span>
+          </p>
+          <ul className="list-disc">
+            {tasks.map((task) => (
+              <li key={task._id} className="list-item m-1">
+                <Task task={task} />
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );

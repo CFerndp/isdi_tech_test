@@ -5,14 +5,23 @@ import { BackendResponse } from "@/services/types.ts";
 
 export const taskApi = createApi({
   reducerPath: "taskApi",
+  tagTypes: ["Task"],
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.API_URL || "http://localhost:8000",
   }),
   endpoints: (builder) => ({
     getTasks: builder.query<BackendResponse<Task[]>, void>({
       query: () => "/task",
+      providesTags: ["Task"],
+    }),
+    deleteTask: builder.mutation<BackendResponse<Task>, string>({
+      query: (id) => ({
+        url: `/task/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Task"],
     }),
   }),
 });
 
-export const { useGetTasksQuery } = taskApi;
+export const { useGetTasksQuery, useDeleteTaskMutation } = taskApi;
