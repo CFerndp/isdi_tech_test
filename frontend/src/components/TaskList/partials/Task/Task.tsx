@@ -20,7 +20,7 @@ export const Task: React.FC<TaskProps> = ({ task }) => {
   }
 
   return (
-    <div className="flex justify-between gap-1">
+    <div className="grid grid-cols-5 gap-1">
       <span className="flex items-center font-bold">Id: {id} </span>
       <input
         type="text"
