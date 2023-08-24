@@ -31,7 +31,7 @@ router.put(TASK_ROUTES.updateTaskById, async (req, res) => {
   }
 });
 
-router.post(TASK_ROUTES.getTasks, async (req, res) => {
+router.post(TASK_ROUTES.createTask, async (req, res) => {
   const { name } = req.body;
 
   try {

@@ -5,3 +5,7 @@ export const GET_TASKS_FIXTURES = [
     done: false,
   },
 ];
+
+export const POST_TASK_FIXTURES = {
+  done: false,
+};
