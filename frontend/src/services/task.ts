@@ -30,6 +30,14 @@ export const taskApi = createApi({
 
       invalidatesTags: ["Task"],
     }),
+    createTask: builder.mutation<BackendResponse<Task>, Pick<Task, "name">>({
+      query: (task) => ({
+        url: `/task`,
+        method: "POST",
+        body: task,
+      }),
+      invalidatesTags: ["Task"],
+    }),
   }),
 });
 
@@ -37,4 +45,5 @@ export const {
   useGetTasksQuery,
   useDeleteTaskMutation,
   useUpdateTaskMutation,
+  useCreateTaskMutation,
 } = taskApi;

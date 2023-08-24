@@ -1,6 +1,7 @@
 import React from "react";
 import { useTasks } from "@/components/TaskList/hooks.ts";
 import { Task } from "@/components/TaskList/partials/Task/Task.tsx";
+import { CreateTask } from "@/components/TaskList/partials/CreateTask/CreateTask.tsx";
 
 const TaskList: React.FC = () => {
   const { tasks, isLoading } = useTasks();
@@ -11,6 +12,7 @@ const TaskList: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
+      <CreateTask />
       {tasks.length === 0 ? (
         <p className="text-xl">No tasks</p>
       ) : (
