@@ -1,5 +1,6 @@
 import React from "react";
 import { useTasks } from "@/components/TaskList/hooks.ts";
+import { Task } from "@/components/TaskList/partials/Task/Task.tsx";
 
 const TaskList: React.FC = () => {
   const { tasks, isLoading } = useTasks();
@@ -15,8 +16,8 @@ const TaskList: React.FC = () => {
       ) : (
         <ul className="list-disc">
           {tasks.map((task) => (
-            <li key={task._id} className="text-xl">
-              {task.name} - {task.done ? "Done" : "Not done"}
+            <li key={task._id} className="list-item m-1">
+              <Task task={task} />
             </li>
           ))}
         </ul>
