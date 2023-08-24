@@ -23,6 +23,7 @@ export const Task: React.FC<TaskProps> = ({ task }) => {
     <div className="grid grid-cols-5 gap-1">
       <span className="flex items-center font-bold">Id: {id} </span>
       <input
+        className="enabled:border hover:border-blue-500"
         type="text"
         value={name}
         onChange={handleOnNameChange}
@@ -38,13 +39,13 @@ export const Task: React.FC<TaskProps> = ({ task }) => {
         />
       </label>
       <button
-        className="bg-green-500 text-white rounded p-1 border-2 border-black"
+        className="bg-green-500 text-white rounded p-1 border-2 border-black hover:bg-green-700"
         onClick={handleActionButton}
       >
         {isEditing ? "Save" : "Edit"}
       </button>
       <button
-        className="bg-red-500 text-white rounded p-1 border-2 border-black"
+        className="bg-red-500 text-white rounded p-1 border-2 border-black hover:bg-red-700"
         onClick={handleOnDeleteClick}
       >
         Delete

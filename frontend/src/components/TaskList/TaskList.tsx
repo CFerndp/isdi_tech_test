@@ -11,7 +11,7 @@ const TaskList: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 shadow-2xl">
       <CreateTask />
       {tasks.length === 0 ? (
         <p className="text-xl">No tasks</p>

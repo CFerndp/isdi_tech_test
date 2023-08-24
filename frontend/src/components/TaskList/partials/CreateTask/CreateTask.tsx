@@ -10,13 +10,13 @@ export const CreateTask: React.FC = () => {
 
   return (
     <form
-      className="border-2 mb-1 flex justify-between items-center"
+      className="border-2 mb-1 grid grid-cols-2 p-1"
       onSubmit={handleSubmit}
     >
-      <div>
+      <div className="flex items-center">
         <label htmlFor="name">Name:</label>
         <input
-          className="border ml-1"
+          className="border ml-1 hover:border-blue-500"
           id="name"
           type="text"
           placeholder="Name your task..."
@@ -25,7 +25,7 @@ export const CreateTask: React.FC = () => {
       </div>
       <input
         type="submit"
-        className="bg-blue-500 text-white rounded p-1 border-2 border-black"
+        className="bg-blue-500 text-white rounded p-1 border-2 border-black hover:bg-blue-700"
       />
     </form>
   );
