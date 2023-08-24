@@ -1,9 +1,13 @@
 import { Task } from "@/types/task.ts";
 import { useState } from "react";
-import { useDeleteTaskMutation } from "@/services/task.ts";
+import {
+  useDeleteTaskMutation,
+  useUpdateTaskMutation,
+} from "@/services/task.ts";
 
 export const useHandleTask = (task: Task) => {
-  const [deleteTask, { isLoading }] = useDeleteTaskMutation();
+  const [deleteTask, { isLoading: isLoadingDelete }] = useDeleteTaskMutation();
+  const [updateTask, { isLoading: isLoadingUpdate }] = useUpdateTaskMutation();
 
   const [name, setName] = useState(task.name);
   const [done, setDone] = useState(task.done);
@@ -25,6 +29,14 @@ export const useHandleTask = (task: Task) => {
   };
 
   const handleOnSaveClick = () => {
+    if (name !== task.name || done !== task.done) {
+      updateTask({
+        _id: task._id,
+        name,
+        done,
+      });
+    }
+
     setIsEditing(false);
   };
 
@@ -37,7 +49,7 @@ export const useHandleTask = (task: Task) => {
     name,
     done,
     isEditing,
-    isLoading,
+    isLoading: isLoadingDelete || isLoadingUpdate,
     handleOnDoneChange,
     handleOnNameChange,
     handleOnDeleteClick,
