@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { Task } from "@/types/task.ts";
+import { BackendResponse } from "@/services/types.ts";
 
 export const taskApi = createApi({
   reducerPath: "taskApi",
@@ -8,7 +9,7 @@ export const taskApi = createApi({
     baseUrl: import.meta.env.API_URL || "http://localhost:8000",
   }),
   endpoints: (builder) => ({
-    getTasks: builder.query<Task[], void>({
+    getTasks: builder.query<BackendResponse<Task[]>, void>({
       query: () => "/task",
     }),
   }),

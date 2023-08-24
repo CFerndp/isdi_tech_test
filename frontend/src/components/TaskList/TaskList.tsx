@@ -1,21 +1,21 @@
 import React from "react";
-import { useGetTasksQuery } from "@/services/task.ts";
+import { useTasks } from "@/components/TaskList/hooks.ts";
 
 const TaskList: React.FC = () => {
-  const { data: tasks, isFetching } = useGetTasksQuery();
+  const { tasks, isLoading } = useTasks();
 
-  if (isFetching) {
+  if (isLoading) {
     return <p>Loading...</p>;
   }
 
   return (
     <div className="container mx-auto p-4">
-      {!tasks || tasks.length === 0 ? (
+      {tasks.length === 0 ? (
         <p className="text-xl">No tasks</p>
       ) : (
         <ul className="list-disc">
           {tasks.map((task) => (
-            <li key={task.id} className="text-xl">
+            <li key={task._id} className="text-xl">
               {task.name} - {task.done ? "Done" : "Not done"}
             </li>
           ))}

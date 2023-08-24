@@ -1,11 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import taskReducer from "@/features/tasks/taskSlice";
 import { taskApi } from "@/services/task.ts";
 export const store = configureStore({
   reducer: {
     [taskApi.reducerPath]: taskApi.reducer,
-    task: taskReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(taskApi.middleware),
