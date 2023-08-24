@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, test } from "@jest/globals";
 import { getDBConnectionURL } from "@/utils";
 
 import configs from "@/config";
-import { TASK_ROUTES } from "@/api/routes";
+import { COMMON_ROUTES } from "@/api/routes";
 import { app } from "@/app";
 
 /* Connecting to the database before each test. */
@@ -26,10 +26,10 @@ afterEach(async () => {
   await mongoose.connection.close();
 });
 
-describe(`Given a ${TASK_ROUTES.getTasks} get request`, () => {
+describe(`Given a ${COMMON_ROUTES.helloWorld} get request`, () => {
   describe("When the request is successful", () => {
     test("Then it should return a 200 status code", async () => {
-      const response = await request(app).get(TASK_ROUTES.getTasks);
+      const response = await request(app).get(COMMON_ROUTES.helloWorld);
       expect(response.status).toBe(200);
     });
   });
