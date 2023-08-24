@@ -1,13 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { getTasksSelector } from "@/features/tasks/taskSelectors.ts";
+import { useGetTasksQuery } from "@/services/task.ts";
 
 const TaskList: React.FC = () => {
-  const tasks = useSelector(getTasksSelector);
+  const { data: tasks, isFetching } = useGetTasksQuery();
+
+  if (isFetching) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="container mx-auto p-4">
-      {tasks.length === 0 ? (
+      {!tasks || tasks.length === 0 ? (
         <p className="text-xl">No tasks</p>
       ) : (
         <ul className="list-disc">
