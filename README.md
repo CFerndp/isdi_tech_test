@@ -1,4 +1,6 @@
 # Tech test for ISDI
+* **Author:** Cristian Fernandez
+* **e-mail:** [cristian.fernandez.del.pozo@gmail.com](mailto:cristian.fernandez.del.pozo@gmail.com) 
 
 ## Description
 This repo follows the monorepo structure. It contains the following packages:
@@ -14,7 +16,7 @@ This repo follows the monorepo structure. It contains the following packages:
       + mockingoose (mock mongo models)
       + supertest (execute http requests)
  
-* db: File in order to add init data into Mongo database 
+* db: File in order to populate init data into Mongo database 
 
 
 ## Installation
@@ -31,3 +33,5 @@ This will expose 2 UIs:
 Also, will expose the backend API
 * Backend: http://localhost:8000
 * DB connection is only accessible from the backend container
+
+For development purposes, read the README.md file inside each package.
