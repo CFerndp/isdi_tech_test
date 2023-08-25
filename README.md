@@ -10,6 +10,7 @@ This repo follows the monorepo structure. It contains the following packages:
         - Redux Toolkit Query (RTK Query)
         - React Hook Forms 
         - Tailwind CSS 
+        - Vitest for testing
 *  backend: NodeJS Server based on Mongo + Express, using Typescript.
     + Technologies in use:
       + mongoose  (MongoDB ORM)

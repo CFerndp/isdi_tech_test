@@ -4,12 +4,12 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  plugins: [react()],
   server: {
     watch: {
       usePolling: true,
@@ -17,5 +17,12 @@ export default defineConfig({
     host: true, // needed for the Docker Container port mapping to work
     strictPort: true,
     port: 5173, // you can replace this port with any port
+  },
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./src/test/setup.ts",
   },
 });
