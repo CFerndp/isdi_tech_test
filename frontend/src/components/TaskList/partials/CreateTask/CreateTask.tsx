@@ -1,11 +1,12 @@
 import React from "react";
 import { useSubmitTask } from "@/components/TaskList/partials/CreateTask/hooks.ts";
+import { Loading } from "@/components/Loading/Loading.tsx";
 
 export const CreateTask: React.FC = () => {
   const { handleSubmit, register, isLoading } = useSubmitTask();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (

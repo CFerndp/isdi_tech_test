@@ -1,6 +1,7 @@
 import React from "react";
 import { TaskProps } from "@/components/TaskList/partials/Task/types.ts";
 import { useHandleTask } from "@/components/TaskList/partials/Task/hooks.ts";
+import { Loading } from "@/components/Loading/Loading.tsx";
 
 export const Task: React.FC<TaskProps> = ({ task }) => {
   const {
@@ -16,7 +17,7 @@ export const Task: React.FC<TaskProps> = ({ task }) => {
   } = useHandleTask(task);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (

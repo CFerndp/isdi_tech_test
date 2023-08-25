@@ -2,12 +2,13 @@ import React from "react";
 import { useTasks } from "@/components/TaskList/hooks.ts";
 import { Task } from "@/components/TaskList/partials/Task/Task.tsx";
 import { CreateTask } from "@/components/TaskList/partials/CreateTask/CreateTask.tsx";
+import { Loading } from "@/components/Loading/Loading.tsx";
 
 const TaskList: React.FC = () => {
   const { tasks, isLoading } = useTasks();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (
