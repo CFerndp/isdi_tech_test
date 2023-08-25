@@ -11,6 +11,7 @@ This repo follows the monorepo structure. It contains the following packages:
         - React Hook Forms 
         - Tailwind CSS 
         - Vitest for testing
+        - msw to mock requests
 *  backend: NodeJS Server based on Mongo + Express, using Typescript.
     + Technologies in use:
       + mongoose  (MongoDB ORM)

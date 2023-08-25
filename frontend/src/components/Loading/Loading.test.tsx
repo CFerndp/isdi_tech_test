@@ -6,7 +6,6 @@ describe("Given a Loading component", () => {
   describe("When it is rendered", () => {
     test("Then a loading text appear", () => {
       render(<Loading />);
-
       expect(screen.getByText("Loading")).toBeInTheDocument();
     });
   });

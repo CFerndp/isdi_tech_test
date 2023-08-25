@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { Task } from "@/types/task.ts";
 import { BackendResponse } from "@/services/types.ts";
-
 export const taskApi = createApi({
   reducerPath: "taskApi",
   tagTypes: ["Task"],
