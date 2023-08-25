@@ -9,7 +9,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     ports:
-      - 27017:27017
+      - "27017:27017"
     volumes:
       - ./db/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
@@ -17,7 +17,7 @@ services:
     image: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - "8081:8081"
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
@@ -30,11 +30,22 @@ services:
     build: ./backend
     restart: always
     ports:
-      - 8000:8000
+      - "8000:8000"
     environment:
-      PORT: "8000"
+      PORT: 8000
       MDB_USER: root
       MDB_PASS: example
       MDB_HOST: mongo
       MDB_PORT: 27017
       MDB_NAME: "tasks_db"
+
+  frontend:
+    depends_on:
+      - backend
+    build: ./frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    environment:
+      API_URL: "http://localhost:8000/"
+
