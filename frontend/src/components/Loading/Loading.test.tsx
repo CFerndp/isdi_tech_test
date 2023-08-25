@@ -1,13 +1,13 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from "@testing-library/react";
 
-import { describe, test } from "vitest";
-import { Loading } from "./Loading.tsx"
-describe('App', () => {
-  test('renders headline', () => {
-    render(<Loading />);
+import { describe, expect, test } from "vitest";
+import { Loading } from "./Loading.tsx";
+describe("Given a Loading component", () => {
+  describe("When it is rendered", () => {
+    test("Then a loading text appear", () => {
+      render(<Loading />);
 
-    screen.debug();
-
-    // check if App components renders headline
+      expect(screen.getByText("Loading")).toBeInTheDocument();
+    });
   });
 });
